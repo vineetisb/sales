@@ -136,7 +136,7 @@ st.markdown("...")
 # sales by product line [BAR CHART]
 
 sales_by_product_line = (df_selection.groupby(by = ["Product line"])
-                         .sum()[["Total"]].sort_values(by = "Total"))
+                         .sum(numeric_only = True)[["Total"]].sort_values(by = "Total"))
 
 fig_product_sales = px.bar(
     sales_by_product_line,
@@ -159,7 +159,7 @@ fig_product_sales.update_layout(
 # sales by Hour [BAR CHART]
 
 sales_by_hour = (df_selection.groupby(by = ["hour"])
-                         .sum()[["Total"]]
+                         .sum(numeric_only = True)[["Total"]]
                          )
 
 fig_hourly_sales = px.bar(
